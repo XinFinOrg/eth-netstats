@@ -38,6 +38,7 @@ block content
       //-       span.small-title avg block time
       //-       span.big-details {{ avgBlockTime | avgTimeFilter }}
       //-     div.clearfix
+      
       div.col-xs-2.stat-holder
         div.big-info.difficulty.text-orange
           div.pull-left.icon-full-width
@@ -45,21 +46,26 @@ block content
           div.big-details-holder
             span.small-title avg network hashrate
             span.big-details(ng-bind-html="avgHashrate | networkHashrateFilter")
+            div.col-xs-3.stat-holder.xpull-right
+                div.big-info.chart.xdouble-chart
+                  span.small-title last blocks producer
+                  div.blocks-holder(ng-repeat='miner in miners track by miner.miner', data-toggle="tooltip", data-placement="right", data-original-title="{{miner.blocks}}")
+                    div.block-count(class="{{miner.blocks | minerBlocksClass : 'text-'}}") {{miner.blocks}}
+                    //- div.small-title-miner {{miner.miner | minerNameFilter : miner.name}}
+                    div.small-title-miner {{miner.miner}}
+                    minerblock(blocks="{{miner.blocks}}")
+                    div.clearfix
           div.clearfix
-      div.col-xs-2.stat-holder
-        div.big-info.difficulty.text-danger
-          div.pull-left.icon-full-width
-            i.icon-difficulty
-          div.big-details-holder
-            span.small-title difficulty
-            span.big-details
-              span.small-hash {{ lastDifficulty | totalDifficultyFilter }}
-                        div.col-xs-3.stat-holder
-                 div.big-info.chart.text-info
-                   //- i.icon-uncle
-                   span.small-title transactions
-                   sparkchart.big-details.spark-transactions(data="{{transactionDensity.join(',')}}")
-                   div.clearfix
+        
+      //- div.col-xs-2.stat-holder
+      //-   div.big-info.difficulty.text-danger
+      //-     div.pull-left.icon-full-width
+      //-       i.icon-difficulty
+      //-     div.big-details-holder
+      //-       span.small-title difficulty
+      //-       span.big-details
+      //-         span.small-hash {{ lastDifficulty | totalDifficultyFilter }}
+      //-     div.clearfix
 
       div.clearfix
 
@@ -120,7 +126,7 @@ block content
 
               div.col-xs-3.stat-holder.xpull-right
                 div.big-info.chart.xdouble-chart
-                  span.small-title last blocks miners
+                  span.small-title last blocks producer
                   div.blocks-holder(ng-repeat='miner in miners track by miner.miner', data-toggle="tooltip", data-placement="right", data-original-title="{{miner.blocks}}")
                     div.block-count(class="{{miner.blocks | minerBlocksClass : 'text-'}}") {{miner.blocks}}
                     //- div.small-title-miner {{miner.miner | minerNameFilter : miner.name}}
