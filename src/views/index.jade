@@ -29,20 +29,20 @@ block content
             span.small-title avg block time
             span.big-details {{ avgBlockTime | avgTimeFilter }}
           div.clearfix
-      div.col-xs-2.stat-holder
-         div.big-info.gasprice.text-highlight
-          div.pull-left.icon-full-width
-            i.icon-gasprice
-          div.big-details-holder
-            span.small-title gas price
-            span.big-details {{ bestStats.gasPrice.toString() | gasPriceFilter }}
-          div.clearfix
+      //- div.col-xs-2.stat-holder
+      //-    div.big-info.gasprice.text-highlight
+      //-     div.pull-left.icon-full-width
+      //-       i.icon-gasprice
+      //-     div.big-details-holder
+      //-       span.small-title gas price
+      //-       span.big-details {{ bestStats.gasPrice.toString() | gasPriceFilter }}
+      //-     div.clearfix
       div.col-xs-2.stat-holder
         div.big-info.gasprice.text-highlight
           div.pull-left.icon-full-width
             i.icon-difficulty
           div.big-details-holder
-            span.small-title gas limit
+            span.small-title max block size
             span.big-details {{ bestStats.block.gasLimit }} gas
           div.clearfix
       div.col-xs-2.stat-holder
@@ -77,19 +77,19 @@ block content
       div.col-xs-2.stat-holder
         div.big-info.chart.text-info
           i.icon-gasprice
-          span.small-title gas spending
+          span.small-title Block Size (in Wei)
           sparkchart.big-details.spark-gasspending(data="{{gasSpending.join(',')}}")
           div.clearfix
-      div.col-xs-2.stat-holder
-        div.big-info.chart.text-info
-          i.icon-difficulty
-          span.small-title gas limit
-          sparkchart.big-details.spark-difficulty(data="{{lastGasLimit.join(',')}}")
-          div.clearfix
+      //- div.col-xs-2.stat-holder
+      //-   div.big-info.chart.text-info
+      //-     i.icon-difficulty
+      //-     span.small-title gas limit
+      //-     sparkchart.big-details.spark-difficulty(data="{{lastGasLimit.join(',')}}")
+      //-     div.clearfix
       div.col-xs-2.stat-holder.xpull-right
         div.big-info.chart.xdouble-chart.text-danger
           //- i.icon-hashrate
-          span.small-title last blocks miners
+          span.small-title last blocks producer
           div.blocks-holder(ng-repeat='miner in miners track by miner.miner', data-toggle="tooltip", data-placement="right", data-original-title="{{miner.blocks}}")
             div.block-count(class="{{miner.blocks | minerBlocksClass : 'text-'}}") {{miner.blocks}}
             div.small-title-miner {{miner.miner | minerNameFilter : miner.name}}
@@ -109,8 +109,8 @@ block content
               i.icon-laptop(data-toggle="tooltip", data-placement="top", title="Node type", ng-click="orderTable(['info.node'], false)")
             th.th-latency
               i.icon-clock(data-toggle="tooltip", data-placement="top", title="Node latency", ng-click="orderTable(['stats.latency'], false)")
-            th
-              i.icon-mining(data-toggle="tooltip", data-placement="top", title="Is mining", ng-click="orderTable(['-stats.hashrate'], false)")
+            //- th
+            //-   i.icon-mining(data-toggle="tooltip", data-placement="top", title="Is mining", ng-click="orderTable(['-stats.hashrate'], false)")
             th
               i.icon-group(data-toggle="tooltip", data-placement="top", title="Peers", ng-click="orderTable(['-stats.peers'], false)")
             th
