@@ -1,7 +1,7 @@
 {
-  "name": "eth-netstats",
-  "description": "Ethereum Network Intelligence dashboard",
-  "version": "0.0.9",
+  "name": "xdc-netstats",
+  "description": "XDC01 Network Intelligence dashboard",
+  "version": "0.1.0",
   "private": true,
   "engines": {
     "node": "0.12.0",
@@ -42,9 +42,9 @@
   },
   "authors": [
     {
-      "name": "Marian Oancea",
-      "email": "marian@ethdev.com",
-      "url": "https://github.com/cubedro"
+      "name": "Anil Chinchawale",
+      "email": "Anil@xinfin.org",
+      "url": "https://github.com/anilchinchawale"
     }
   ],
   "license": "LGPL-3.0",
