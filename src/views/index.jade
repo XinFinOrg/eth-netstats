@@ -57,7 +57,9 @@ block content
           div.clearfix
       div.clearfix
 
-    div.row(ng-cloak)
+      div.row
+        div.col-xs-8.col-lg-6.stat-holder.map-holder.pull-right
+          nodemap#mapHolder(data="map")
       div.col-xs-2.stat-holder
         div.big-info.chart(class="{{ avgBlockTime | avgTimeClass }}")
           i.icon-time
