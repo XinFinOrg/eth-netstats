@@ -18,7 +18,7 @@ block content
                         .col-9.align-self-center.text-right
                           .m-l-10
                             p.small-title.mb-0 BEST BLOCK
-                            h5.big-details.mt-0 #951,008
+                            h5.big-details.mt-0 {{'#'}}{{ bestBlock | number}}
                     // end card-body
                   // end card
                 // end col
@@ -31,8 +31,8 @@ block content
                             i.icon-hashrate
                         .col-9.text-right.align-self-center
                           .m-l-10
-                            p.small-title.mb-0 AVG TRANSACTION RATE
-                            h5.big-details.mt-0 2 tx/s
+                            p.small-title.mb-0 last block
+                            h5.big-details.mt-0 {{ lastBlock | blockTimeFilter }}
                     // end card-body
                   // end card
                 // end col
@@ -45,8 +45,8 @@ block content
                             i.icon-time
                         .col-9.align-self-center.text-right
                           .m-l-10
-                            p.small-title.mb-0 LAST BLOCK
-                            h5.big-details.mt-0 12 s ago
+                            p.small-title.mb-0  max block size
+                            h5.big-details.mt-0 {{ bestStats.block.gasLimit }} Gas
                     // end card-body
                   // end card
                 // end col
@@ -60,7 +60,7 @@ block content
                         .col-9.align-self-center.text-right
                           .m-l-10
                             p.small-title.mb-0 AVG BLOCK TIME
-                            h5.big-details.mt-0 14.83 s
+                            h5.big-details.mt-0  {{ avgBlockTime | avgTimeFilter }}
                     // end card-body
                   // end card
                 // end col
@@ -81,7 +81,7 @@ block content
                             p.small-title.mb-0 ACTIVE NODES
                         .col-5.align-self-center.text-right
                           div
-                            p.mb-0 65/65
+                            p.mb-0 {{nodesActive}}/{{nodesTotal}}
                     // end card-body
                   // end card
                 // end col
