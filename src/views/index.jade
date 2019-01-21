@@ -31,8 +31,8 @@ block content
                             i.icon-hashrate
                         .col-9.text-right.align-self-center
                           .m-l-10
-                            p.small-title.mb-0 last block
-                            h5.big-details.mt-0 {{ lastBlock | blockTimeFilter }}
+                            p.small-title.mb-0 AVG TRANSACTION RATE
+                            h5.big-details.mt-0 3 tx/s 
                     // end card-body
                   // end card
                 // end col
@@ -45,8 +45,9 @@ block content
                             i.icon-time
                         .col-9.align-self-center.text-right
                           .m-l-10
-                            p.small-title.mb-0  max block size
-                            h5.big-details.mt-0 {{ bestStats.block.gasLimit }} Gas
+                            span.small-title last block
+                            span.big-details {{ lastBlock | blockTimeFilter }}
+                        //- span.big-details(time-ago="lastBlock")
                     // end card-body
                   // end card
                 // end col
@@ -96,7 +97,7 @@ block content
                             p.small-title.mb-0 GAS PRICE
                         .col-5.align-self-center.text-right
                           div
-                            p.mb-0 10 gwei
+                            p.mb-0 {{ bestStats.gasPrice.toString() | gasPriceFilter }}
                     // end card-body
                   // end card
                 // end col
@@ -108,10 +109,10 @@ block content
                           .icon-block-small
                             i.icon-gasprice
                           .pt-1
-                            p.small-title.mb-0 GAS LIMIT
-                        .col-5.align-self-center.text-right
+                            p.small-title.mb-0  max block size
+                          .col-5.align-self-center.text-right
                           div
-                            p.mb-0 136500000 gas
+                            p.mb-0 {{nodesActive}}/{{nodesTotal}}
                     // end card-body
                   // end card
                 // end col
@@ -140,8 +141,7 @@ block content
                   .card
                     .card-body.text-success
                       h4.mt-0.header-title BLOCK TIME
-                      p.text-muted.mb-4.font-14
-                      #morris-bar-stacked.morris-chart
+                      sparkchart.big-details.spark-blocktimes(data="{{lastBlocksTime.join(',')}}", tooltipsuffix="s")
                     // end card-body
                   // end card
                 // end col
@@ -149,26 +149,23 @@ block content
                   .card
                     .card-body.text-success
                       h4.mt-0.header-title TRANSACTIONS PER BLOCK
-                      p.text-muted.mb-4.font-14
-                      #morris-bar-stacked-1.morris-chart
+                      sparkchart.big-details.spark-transactions(data="{{transactionDensity.join(',')}}")
                     // end card-body
                   // end card
                 // end col
                 .col-lg-6.col-md-6.col-sm-6
                   .card
                     .card-body.text-success
-                      h4.mt-0.header-title TPS PER BLOCK
-                      p.text-muted.mb-4.font-14
-                      #morris-bar-stacked-2.morris-chart
+                      h4.mt-0.header-title Block Size (in Wei)
+                      sparkchart.big-details.spark-gasspending(data="{{gasSpending.join(',')}}")
                     // end card-body
                   // end card
                 // end col
                 .col-lg-6.col-md-6.col-sm-6
                   .card
                     .card-body.text-success
-                      h4.mt-0.header-title DIFFICULTY
-                      p.text-muted.mb-4.font-14
-                      #morris-bar-stacked-3.morris-chart
+                      p.small-title.mb-0  max block size
+                      h5.big-details.mt-0 {{ bestStats.block.gasLimit }} Gas
                     // end card-body
                   // end card
                 // end col
@@ -178,7 +175,7 @@ block content
               .card
                 .card.mb-0
                   .card-body
-                    #world-map-markers.dash-map
+                    nodemap#mapHolder(data="map")
                 // end card
               // end card
             // end col
