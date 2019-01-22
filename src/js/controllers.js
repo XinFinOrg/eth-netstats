@@ -15,6 +15,7 @@ netStatsApp.controller('StatsCtrl', function($scope, $filter, $localStorage, soc
 	$scope.lastBlock = 0;
 	$scope.lastDifficulty = 0;
 	$scope.upTimeTotal = 0;
+	$scope.avgTransactionRate = 0;
 	$scope.avgBlockTime = 0;
 	$scope.blockPropagationAvg = 0;
 	$scope.avgHashrate = 0;
@@ -329,6 +330,9 @@ netStatsApp.controller('StatsCtrl', function($scope, $filter, $localStorage, soc
 				if( !_.isEqual($scope.avgBlockTime, data.avgBlocktime) )
 					$scope.avgBlockTime = data.avgBlocktime;
 
+				if( !_.isEqual($scope.avgTransactionRate, data.avgTransactionRate) )
+					$scope.avgTransactionRate = data.avgTransactionRate;	
+					
 				if( !_.isEqual($scope.avgHashrate, data.avgHashrate) )
 					$scope.avgHashrate = data.avgHashrate;
 

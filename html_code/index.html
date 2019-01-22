@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
+    <title>XinFin Network Status</title>
+    <meta content="Admin Dashboard" name="description">
+    <meta content="Mannatthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- jvectormap -->
+    <link href="assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
+    <link href="assets/plugins/morris/morris.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+    <link href="assets/css/icons-netstats.css" rel="stylesheet" type="text/css">
+        
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row flex-row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-info">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-3 align-self-center">
+                                            <div class="icon-block-big"><i class="icon-block"></i></div>
+                                        </div>
+                                        <div class="col-9 align-self-center text-right">
+                                            <div class="m-l-10">
+                                                <p class="small-title mb-0">BEST BLOCK</p>
+                                                <h5 class="big-details mt-0">#951,008</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-warning">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-3 align-self-center">
+                                            <div class="icon-block-big"><i class="icon-hashrate"></i></div>
+                                        </div>
+                                        <div class="col-9 text-right align-self-center">
+                                            <div class="m-l-10">
+                                                <p class="small-title mb-0">AVG TRANSACTION RATE</p>
+                                                <h5 class="big-details mt-0">2 tx/s</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-3 align-self-center">
+                                            <div class="icon-block-big"><i class="icon-time"></i></div>
+                                        </div>
+                                        <div class="col-9 align-self-center text-right">
+                                            <div class="m-l-10">
+                                                <p class="small-title mb-0">LAST BLOCK</p>
+                                                <h5 class="big-details mt-0">12 s ago</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-danger">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-3 align-self-center">
+                                            <div class="icon-block-big"><i class="icon-gas"></i></div>
+                                        </div>
+                                        <div class="col-9 align-self-center text-right">
+                                            <div class="m-l-10">
+                                                <p class="small-title mb-0">AVG BLOCK TIME</p>
+                                                <h5 class="big-details mt-0">14.83 s</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row flex-row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-7 align-self-center">
+                                            <div class="icon-block-small"><i class="icon-node"></i></div>
+                                            <div class="pt-1">
+                                                <p class="small-title mb-0">ACTIVE NODES</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 align-self-center text-right">
+                                            <div>
+                                                <p class="mb-0">65/65</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-info">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-7 align-self-center">
+                                            <div class="icon-block-small"><i class="icon-gasprice"></i></div>
+                                            <div class="pt-1">
+                                                <p class="small-title mb-0">GAS PRICE</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 align-self-center text-right">
+                                            <div>
+                                                <p class="mb-0">10 gwei</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-info">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-7 align-self-center">
+                                            <div class="icon-block-small"><i class="icon-gasprice"></i></div>
+                                            <div class="pt-1">
+                                                <p class="small-title mb-0">GAS LIMIT</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 align-self-center text-right">
+                                            <div>
+                                                <p class="mb-0">136500000 gas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+                                    <div class="row d-flex flex-row">
+                                        <div class="col-7 align-self-center">
+                                            <div class="icon-block-small"><i class="icon-bulb"></i></div>
+                                            <div class="pt-1">
+                                                <p class="small-title mb-0">UPTIME</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 align-self-center text-right">
+                                            <div>
+                                                <p class="mb-0">100%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row flex-row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+                                    <h4 class="mt-0 header-title">BLOCK TIME</h4>
+                                    <p class="text-muted mb-4 font-14"></p>
+                                    <div id="morris-bar-stacked" class="morris-chart"></div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+                                    <h4 class="mt-0 header-title">TRANSACTIONS PER BLOCK</h4>
+                                    <p class="text-muted mb-4 font-14"></p>
+                                    <div id="morris-bar-stacked-1" class="morris-chart"></div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+                                    <h4 class="mt-0 header-title">TPS PER BLOCK</h4>
+                                    <p class="text-muted mb-4 font-14"></p>
+                                    <div id="morris-bar-stacked-2" class="morris-chart"></div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-body text-success">
+                                    <h4 class="mt-0 header-title">DIFFICULTY</h4>
+                                    <p class="text-muted mb-4 font-14"></p>
+                                    <div id="morris-bar-stacked-3" class="morris-chart"></div>
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card mb-0">
+                            <div class="card-body">
+                                <div id="world-map-markers" class="dash-map"></div>
+                            </div>
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row d-flex flex-row">
+                                <div class="col-md-12 alert-warning bg-transparant">
+                                    <div class="icon-small"><i class="icon-warning-o"></i></div>
+                                    <div class="warning-text">
+                                        <p class="mb-0">
+                                            <span class="small-title">ATTENTION!</span> This does not represent the entire XinFin network - only authorized signer and proxy nodes - and information may not be 100% accurate.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-icon-small">
+                                        <tr>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-check-o" data-original-title="Pin nodes to display first"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-node" data-original-title="Node name"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-laptop" data-original-title="Node type"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-clock" data-original-title="Node latency"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-group" data-original-title="Peers"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-network" data-original-title="Pending transactions"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-block" data-original-title="Last block"></i></th>
+                                            <th class="border-top-0"><i data-toggle="tooltip" data-placement="top" title="" class="icon-bulb" data-original-title="Up-time"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-success">
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Foundation Monitoring (Benchmarking-mon12)</a></td>
+                                            <td>Geth/v1.8.21-stable-9dc5d1a9/linux-amd64/go1.10.4</td>
+                                            <td>44 ms</td>
+                                            <td>25</td>
+                                            <td>110</td>
+                                            <td>#7,082,618</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">2Miners.com Ethereum PPLNS</a></td>
+                                            <td>Parity-Ethereum//v2.2.7-stable-b00a21f-20190115/x86_64-linux-gnu/rustc1.31.1</td>
+                                            <td>60 ms</td>
+                                            <td>11</td>
+                                            <td>90</td>
+                                            <td>#7,082,618</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Bootnode-BR</a></td>
+                                            <td>Geth/v1.8.21-stable/linux-amd64/go1.10.3</td>
+                                            <td>53 ms</td>
+                                            <td>499</td>
+                                            <td>50</td>
+                                            <td>#7,082,617</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">BaikalMine Ethereum SOLO</a></td>
+                                            <td>Geth/v1.8.21-stable/linux-amd64/go1.10</td>
+                                            <td>75 ms</td>
+                                            <td>200</td>
+                                            <td>90</td>
+                                            <td>#7,082,600</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Foundation Monitoring (Benchmarking-mon12)</a></td>
+                                            <td>Geth/v1.8.21-stable-9dc5d1a9/linux-amd64/go1.10.4</td>
+                                            <td>44 ms</td>
+                                            <td>25</td>
+                                            <td>110</td>
+                                            <td>#7,082,618</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">2Miners.com Ethereum PPLNS</a></td>
+                                            <td>Parity-Ethereum//v2.2.7-stable-b00a21f-20190115/x86_64-linux-gnu/rustc1.31.1</td>
+                                            <td>60 ms</td>
+                                            <td>11</td>
+                                            <td>90</td>
+                                            <td>#7,082,618</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">Bootnode-BR</a></td>
+                                            <td>Geth/v1.8.21-stable/linux-amd64/go1.10.3</td>
+                                            <td>53 ms</td>
+                                            <td>499</td>
+                                            <td>50</td>
+                                            <td>#7,082,617</td>
+                                            <td>100%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><i data-toggle="tooltip" data-placement="right" data-original-title="Click to pin" class="icon-loader"></i></td>
+                                            <td><a data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-center">BaikalMine Ethereum SOLO</a></td>
+                                            <td>Geth/v1.8.21-stable/linux-amd64/go1.10</td>
+                                            <td>75 ms</td>
+                                            <td>200</td>
+                                            <td>90</td>
+                                            <td>#7,082,600</td>
+                                            <td>100%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end wrapper -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">© 2019 XinFin. All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- jQuery  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/plugins/raphael/raphael-min.js"></script>
+    <script src="assets/plugins/morris/morris.min.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <!-- Main js -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+
+<!-- /.modal -->
+<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="bg-image">
+            <div class="modal-header border-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body pt-0">
+                <p><strong>Geth/v1.8.21-stable-9dc5d1a9/linux-amd64/go1.10.4</strong></p>
+                <p>Version: <strong>v1.8.21-stable</strong></p>
+                <p>Network: <strong>1</strong></p>
+                <p>Protocol: <strong>eth/63</strong></p>
+                <p>Port: <strong>30303</strong></p>
+                <p>Web3: <strong>No</strong></p>
+                <p>API: <strong>0.1.1</strong></p>
+                <p>OS: <strong>linux amd64</strong></p>
+                <p>Location: <strong>Ann Arbor, US</strong></p>
+                <p>Contact: <strong>andrej@ethereum.com</strong></p>
+            </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
