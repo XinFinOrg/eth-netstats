@@ -337,6 +337,28 @@ angular.module('netStatsApp.filters', [])
 		return prefix + Math.round(result) + " days";
 	};
 })
+.filter('transactionRateFilter', ['$sce', '$filter', function ($sce, filter) {
+	return function (rate) {
+		if (rate === null)
+			rate = 0;
+
+		var result = 0;
+		var unit = '';
+
+		if (rate < 10000) {
+			result = rate;
+			unit = '';
+		} else if (rate < Math.pow(1000, 2)) {
+			result = rate / 1000;
+			unit = 'K';
+		} else if (rate >= Math.pow(1000, 2)) { // keeping the condition to cover the zero case
+			result = rate / Math.pow(1000, 2);
+			unit = 'M';
+		}
+
+		return $sce.trustAsHtml(filter('number')(result.toFixed(0)) + ' <span class="small-hash">' + unit + 'tx/s</span>');
+	};
+}])
 .filter('blockPropagationAvgFilter', function() {
 	return function(stats, bestBlock) {
 		var ms = stats.propagationAvg;
