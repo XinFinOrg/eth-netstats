@@ -32,7 +32,8 @@ block content
                         .col-9.text-right.align-self-center
                           .m-l-10
                             p.small-title.mb-0 AVG TRANSACTION RATE
-                            h5.big-details.mt-0 3 tx/s 
+                            //- h5.big-details.mt-0 3 /1993
+                            span.big-details(ng-bind-html="avgTransactionRate | transactionRateFilter")
                     // end card-body
                   // end card
                 // end col
