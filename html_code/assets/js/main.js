@@ -41,17 +41,3 @@ function(t) {
     window.jQuery.MainApp.init()
 }();
 
-
-
-/*----------NICE SCROLL FOR WEBPAGE----------*/
-var nice = false;
-
-  $(function() {
-    nice = $("html").niceScroll();
-  });
-  
-  var obj = window;
-  
-  console.log(obj.length);
-  console.log("selector" in obj);
-/*----------NICE SCROLL FOR WEBPAGE----------*/
