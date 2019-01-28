@@ -1,7 +1,7 @@
 XDC01 Network Stats
 ============
 
-This is a visual interface for tracking ethereum network status. It uses WebSockets to receive stats from running nodes and output them through an angular interface.
+This is a visual interface for tracking XinFin Network status. It uses WebSockets to receive stats from running nodes and output them through an angular interface.
 
 ## Prerequisite
 * node
