@@ -2,9 +2,8 @@
 extends ./layout.jade
 
 block content
-  div.container-fluid(ng-controller='StatsCtrl')
     .wrapper
-        .container-fluid
+        .container-fluid(ng-controller='StatsCtrl')
           .row
             .col-lg-12
               .row.flex-row
@@ -196,7 +195,8 @@ block content
                       .warning-text
                         p.mb-0
                           span.small-title ATTENTION!
-                          |  This does not represent the entire XinFin network - only authorized signer and proxy nodes - and information may not be 100% accurate.
+                          |  This does not represent the entire XinFin Network & information may not be 100% accurate. If you like to setup XinFin Node then 
+                          a(href="http://xinfin.network/#masternode") Click Here.
                 // end card-body
               // end card
             // end col
@@ -220,8 +220,8 @@ block content
                           |                                             
                           th.border-top-0
                             i.icon-clock(data-toggle='tooltip', data-placement='top', title='', data-original-title='Node latency')
-                          th.border-top-0
-                            i.icon-group(data-toggle="tooltip", data-placement="top", title="Address", ng-click="orderTable(['info.coinbase'], false)")  
+                          //- th.border-top-0
+                          //-   i.icon-group(data-toggle="tooltip", data-placement="top", title="Address", ng-click="orderTable(['info.coinbase'], false)")  
                           |                                             
                           th.border-top-0
                             i.icon-group(data-toggle='tooltip', data-placement='top', title='', data-original-title='Peers')
@@ -249,9 +249,9 @@ block content
                           div.small(ng-bind-html="node.info.node | nodeVersion")
                         td(class="{{ node.readable.latencyClass }}")
                           span.small {{ node.readable.latency }}
-                        td(class="{{ node.info.coinbase }}")
-                          span.small {{ node.info.coinbase }}
-                        //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
+                        //- td(class="{{ node.info.coinbase }}")
+                        //-   span.small {{ node.stats.block.miner }}
+                          //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
                         td(class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
                         td(style="padding-left: 15px;") {{node.stats.pending}}
                         td(class="{{ node.stats | blockClass : bestBlock }}")
