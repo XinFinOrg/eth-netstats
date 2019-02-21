@@ -17,7 +17,7 @@ block content
                         .col-9.align-self-center.text-right
                           .m-l-10
                             p.small-title.mb-0 BEST BLOCK
-                            h5.big-details.mt-0 {{'#'}}{{ bestBlock | number}}
+                            h5.big-details.mt-0.mb-0 {{'#'}}{{ bestBlock | number}}
                     // end card-body
                   // end card
                 // end col
@@ -46,7 +46,7 @@ block content
                         .col-9.align-self-center.text-right
                           .m-l-10
                             span.small-title last block
-                            h5.big-details.mt-0 {{ lastBlock | blockTimeFilter }}
+                            h5.big-details.mt-0.mb-0 {{ lastBlock | blockTimeFilter }}
                         //- span.big-details(time-ago="lastBlock")
                     // end card-body
                   // end card
@@ -61,7 +61,7 @@ block content
                         .col-9.align-self-center.text-right
                           .m-l-10
                             p.small-title.mb-0 AVG BLOCK TIME
-                            h5.big-details.mt-0  {{ avgBlockTime | avgTimeFilter }}
+                            h5.big-details.mt-0.mb-0  {{ avgBlockTime | avgTimeFilter }}
                     // end card-body
                   // end card
                 // end col
