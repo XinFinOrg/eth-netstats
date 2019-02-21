@@ -220,8 +220,8 @@ block content
                           |                                             
                           th.border-top-0
                             i.icon-clock(data-toggle='tooltip', data-placement='top', title='', data-original-title='Node latency')
-                          th.border-top-0
-                            i.icon-group(data-toggle="tooltip", data-placement="top", title="Address", ng-click="orderTable(['info.coinbase'], false)")  
+                          //- th.border-top-0
+                          //-   i.icon-group(data-toggle="tooltip", data-placement="top", title="Address", ng-click="orderTable(['info.coinbase'], false)")  
                           |                                             
                           th.border-top-0
                             i.icon-group(data-toggle='tooltip', data-placement='top', title='', data-original-title='Peers')
@@ -249,9 +249,9 @@ block content
                           div.small(ng-bind-html="node.info.node | nodeVersion")
                         td(class="{{ node.readable.latencyClass }}")
                           span.small {{ node.readable.latency }}
-                        td(class="{{ node.info.coinbase }}")
-                          span.small {{ node.info.coinbase }}
-                        //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
+                        //- td(class="{{ node.info.coinbase }}")
+                        //-   span.small {{ node.stats.block.miner }}
+                          //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
                         td(class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
                         td(style="padding-left: 15px;") {{node.stats.pending}}
                         td(class="{{ node.stats | blockClass : bestBlock }}")
