@@ -252,7 +252,7 @@ block content
                         //- td(class="{{ node.info.coinbase }}")
                         //-   span.small {{ node.stats.block.miner }}
                           //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
-                       td(data-label='Peers',class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
+                        td(data-label='Peers',class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
                         td(style="padding-left: 15px;",data-label='Pending Transactions') {{node.stats.pending}}
                         td(class="{{ node.stats | blockClass : bestBlock }}",data-label='Last Block')
                           span(class="{{ node.readable.forkMessage ? node.readable.forkClass : '' }}") {{'#'}}{{ node.stats.block.number | number }}
