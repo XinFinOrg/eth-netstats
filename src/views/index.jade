@@ -252,7 +252,7 @@ block content
                         //- td(class="{{ node.info.coinbase }}")
                         //-   span.small {{ node.stats.block.miner }}
                           //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
-                        td(data-label='Peers',class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
+                       td(data-label='Peers',class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
                         td(style="padding-left: 15px;",data-label='Pending Transactions') {{node.stats.pending}}
                         td(class="{{ node.stats | blockClass : bestBlock }}",data-label='Last Block')
                           span(class="{{ node.readable.forkMessage ? node.readable.forkClass : '' }}") {{'#'}}{{ node.stats.block.number | number }}
@@ -268,8 +268,9 @@ block content
                         //- td(class="{{ node.stats | propagationTimeClass : bestBlock }}")
                         //-   div.propagationBox
                         //-   span {{node.stats.block.propagation | blockPropagationFilter}}
-                        td.peerPropagationChart(class="{{node.id}}",,data-label='Propagation Chart')
+                        td.peerPropagationChart(class="{{node.id}}",data-label='Propagation Chart')
                           nodepropagchart(data="{{node.history.join(',')}}")
+
                         //- td(class="{{ node.stats | propagationNodeAvgTimeClass : bestBlock }}") {{ node.stats | blockPropagationAvgFilter : bestBlock }}
                         td(class="{{ node.stats.uptime | upTimeClass : node.stats.active }}",data-label='Up-time') {{ node.stats.uptime | upTimeFilter }}
 
