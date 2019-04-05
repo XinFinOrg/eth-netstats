@@ -68,7 +68,7 @@ svg{width:100%!important;}
 
 
 .topHeader{position:fixed;max-height:80px;z-index:999;width:100%;padding-top:10px;padding-bottom:10px;overflow:hidden;-webkit-transition:all .3s;transition:all .3s;background-color:#FFFFFF!important;top:0;border-bottom:1px solid #c7dbe9;box-shadow: 1px 0 20px rgba(0,0,0,.2);}
-.open-nav{max-height:400px!important}
+.open-nav{max-height:480px!important}
 .open-nav .mobile-toggle{transform:rotate(-90deg);-webkit-transform:rotate(-90deg)}
 .logo{width:50px;float:left;display:block;}
 nav{float:right;padding-top:15px;padding-bottom:15px;}
