@@ -206,55 +206,55 @@ block content
               .card
                 .card-body
                   .table-responsive
-                    table.table.table-hover.mb-0
-                      thead.table-icon-small
+                    table
+                      thead
                         tr
-                          th.border-top-0
+                          th
                             i.icon-check-o(data-toggle='tooltip', data-placement='top', title='Pin nodes to display first', data-original-title='Pin nodes to display first',class="icon-check-o")
                           |                                             
-                          th.border-top-0
+                          th
                             i.icon-node(data-toggle='tooltip', data-placement='top', title='Pin nodes to display first', data-original-title='Node name')
                           |                                             
-                          th.border-top-0
+                          th
                             i.icon-laptop(data-toggle='tooltip', data-placement='top', title='Pin nodes to display first', data-original-title='Node type')
                           |                                             
-                          th.border-top-0
+                          th
                             i.icon-clock(data-toggle='tooltip', data-placement='top', title='', data-original-title='Node latency')
-                          //- th.border-top-0
+                          //- th
                           //-   i.icon-group(data-toggle="tooltip", data-placement="top", title="Address", ng-click="orderTable(['info.coinbase'], false)")  
                           |                                             
-                          th.border-top-0
+                          th
                             i.icon-group(data-toggle='tooltip', data-placement='top', title='', data-original-title='Peers')
                           |                                             
-                          th.border-top-0
+                          th
                             i.icon-network(data-toggle='tooltip', data-placement='top', title='', data-original-title='Pending transactions')
                           |                                             
-                          th.border-top-0
+                          th
                             i.icon-block(data-toggle='tooltip', data-placement='top', title='', data-original-title='Last block')
                           |             
-                          th.border-top-0
+                          th
                              &nbsp;                              
-                          th.border-top-0
+                          th
                             i.icon-bulb(data-toggle='tooltip', data-placement='top', title='', data-original-title='Up-time')
                       |                                     
                       tbody.text-success
                        tr(ng-repeat='node in nodes | orderBy:predicate track by node.id', class="{{ node.stats | mainClass : bestBlock }}", id="node_{{node.id}}")
-                        td.td-nodecheck
+                        td.td-nodecheck(data-label='Pin nodes to display first')
                           i(ng-click="pinNode(node.id)", class="{{ node.pinned | nodePinClass }}", data-toggle="tooltip", data-placement="right", data-original-title="Click to {{ node.pinned ? 'un' : '' }}pin")
-                        td.nodeInfo(rel="{{node.id}}")
+                        td.nodeInfo(rel="{{node.id}}",data-label='Node Name')
                           span.small(data-toggle="tooltip", data-placement="top", data-html="true", data-original-title="{{node | geoTooltip}}") {{node.info.name}}
                           span.small &nbsp;({{node.info.ip}})
                           i.icon-warning-o
-                        td
+                        td(data-label='Node Type')
                           div.small(ng-bind-html="node.info.node | nodeVersion")
-                        td(class="{{ node.readable.latencyClass }}")
+                        td(class="{{ node.readable.latencyClass }}",data-label='Node Latency')
                           span.small {{ node.readable.latency }}
                         //- td(class="{{ node.info.coinbase }}")
                         //-   span.small {{ node.stats.block.miner }}
                           //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
-                        td(class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
-                        td(style="padding-left: 15px;") {{node.stats.pending}}
-                        td(class="{{ node.stats | blockClass : bestBlock }}")
+                        td(data-label='Peers',class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
+                        td(style="padding-left: 15px;",data-label='Pending Transactions') {{node.stats.pending}}
+                        td(class="{{ node.stats | blockClass : bestBlock }}",data-label='Last Block')
                           span(class="{{ node.readable.forkMessage ? node.readable.forkClass : '' }}") {{'#'}}{{ node.stats.block.number | number }}
                           //- a.small(data-toggle="tooltip", data-placement="top", data-html="true", data-original-title="{{ node.readable.forkMessage }}", class="{{ node.readable.forkClass }}")
                             i.icon-warning-o
@@ -268,10 +268,11 @@ block content
                         //- td(class="{{ node.stats | propagationTimeClass : bestBlock }}")
                         //-   div.propagationBox
                         //-   span {{node.stats.block.propagation | blockPropagationFilter}}
-                        td.peerPropagationChart(class="{{node.id}}")
+                        td.peerPropagationChart(class="{{node.id}}",data-label='Propagation Chart')
                           nodepropagchart(data="{{node.history.join(',')}}")
+
                         //- td(class="{{ node.stats | propagationNodeAvgTimeClass : bestBlock }}") {{ node.stats | blockPropagationAvgFilter : bestBlock }}
-                        td(class="{{ node.stats.uptime | upTimeClass : node.stats.active }}") {{ node.stats.uptime | upTimeFilter }}
+                        td(class="{{ node.stats.uptime | upTimeClass : node.stats.active }}",data-label='Up-time') {{ node.stats.uptime | upTimeFilter }}
 
         footer.footer
           .container-fluid

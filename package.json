@@ -8,7 +8,8 @@
     "npm": "2.5.1"
   },
   "scripts": {
-    "start": "grunt && nodemon ./bin/www"
+    "dev": "grunt && nodemon ./bin/www",
+    "start": "grunt && pm2 start ./bin/www"
   },
   "dependencies": {
     "body-parser": "1.13.3",
@@ -30,7 +31,8 @@
     "primus": "^6.0.5",
     "primus-emit": "^1.0.0",
     "primus-spark-latency": "^0.1.1",
-    "ws": "^1.1.5"
+    "ws": "^1.1.5",
+    "pm2": "latest"
   },
   "repository": {
     "type": "git",
