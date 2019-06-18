@@ -209,8 +209,8 @@ block content
                     table
                       thead
                         tr
-                          th
-                            i.icon-check-o(data-toggle='tooltip', data-placement='top', title='Pin nodes to display first', data-original-title='Pin nodes to display first',class="icon-check-o")
+                          th.th-nodecheck
+                            i.icon-check-o(data-toggle='tooltip', data-placement="top", title="Pin nodes to display first", ng-click="orderTable(['-stats.block.number', 'stats.block.propagation'], false)")
                           |                                             
                           th
                             i.icon-node(data-toggle='tooltip', data-placement='top', title='Pin nodes to display first', data-original-title='Node name')
