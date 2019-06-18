@@ -253,7 +253,7 @@ block content
                         //-   span.small {{ node.stats.block.miner }}
                           //- td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
                         td(data-label='Peers',class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
-                        td(style="padding-left: 15px;",data-label='Pending Transactions') {{node.stats.pending}}
+                        td(data-label='Pending Transactions') {{node.stats.pending}}
                         td(class="{{ node.stats | blockClass : bestBlock }}",data-label='Last Block')
                           span(class="{{ node.readable.forkMessage ? node.readable.forkClass : '' }}") {{'#'}}{{ node.stats.block.number | number }}
                           //- a.small(data-toggle="tooltip", data-placement="top", data-html="true", data-original-title="{{ node.readable.forkMessage }}", class="{{ node.readable.forkClass }}")
