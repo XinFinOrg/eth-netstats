@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "grunt && nodemon ./bin/www",
-    "start": "grunt && pm2 start ./bin/www"
+    "start": "grunt && pm2 start ./bin/www --name XDCStats-MainNet"
   },
   "dependencies": {
     "body-parser": "1.13.3",
