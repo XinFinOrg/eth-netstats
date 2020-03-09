@@ -226,7 +226,6 @@ block content
                           i(ng-click="pinNode(node.id)", class="{{ node.pinned | nodePinClass }}", data-toggle="tooltip", data-placement="right", data-original-title="Click to {{ node.pinned ? 'un' : '' }}pin")
                         td.nodeInfo(rel="{{node.id}}",data-label='Node Name')
                           span.small(data-toggle="tooltip", data-placement="top", data-html="true", data-original-title="{{node | geoTooltip}}") {{node.info.name}}
-                          span.small &nbsp;({{node.info.ip}})
                           i.icon-warning-o
                         td(data-label='Node Type')
                           div.small(ng-bind-html="node.info.node | nodeVersion")
