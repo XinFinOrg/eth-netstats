@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "grunt && nodemon ./bin/www",
-    "start": "pm2 start ./bin/www --name XDCStats"
+    "start": "pm2 start ./bin/www --name XDCStats",
+    "alert": "pm2 start alert.js --name XDCalert"
   },
   "dependencies": {
     "body-parser": "1.13.3",
@@ -32,7 +33,10 @@
     "primus-emit": "^1.0.0",
     "primus-spark-latency": "^0.1.1",
     "ws": "^1.1.5",
-    "pm2": "latest"
+    "pm2": "latest",
+    "dotenv": "^8.2.0",
+    "net": "^1.0.2",
+    "xdc3": "latest"
   },
   "repository": {
     "type": "git",
