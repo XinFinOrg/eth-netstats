@@ -8,7 +8,8 @@
     "npm": "2.5.1"
   },
   "scripts": {
-    "dev": "grunt && nodemon ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "grunt": "grunt && nodemon ./bin/www",
     "start": "pm2 start ./bin/www --name XDCStats",
     "alert": "pm2 start alert.js --name XDCalert"
   },
