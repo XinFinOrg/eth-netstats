@@ -15,18 +15,18 @@ const main = async () => {
         web3 = new Web3(new Web3.providers.HttpProvider(process.env.RPC_ENDPOINT))
         latestBlockNumber = await web3.eth.getBlockNumber()
     } catch (err) {
-        console.log("Unable to connect public rpc at ", process.env.RPC_ENDPOINT)
+        console.log("Unable to connect public rpc at ", process.env.RPC_ENDPOINT) 
         console.log(err)
-        let msg = "Cannot connect public rpc " + process.env.RPC_ENDPOINT
+        let msg = "Cannot connect public rpc " + process.env.RPC_ENDPOINT + "\nTime :- "+new(Date)
         alertTelegram(msg, process.env.TELEGRAM_TOKEN, process.env.TELEGRAM_CHAT)
     }
     for(let i=0;i<RPCEndPoints.length;i++){
-        let rpcEndpoint = "http://"+RPCEndPoints[i]
+         let rpcEndpoint = "http://"+RPCEndPoints[i]
     try {
         localWeb3 = new Web3(new Web3.providers.HttpProvider(rpcEndpoint))
         localLatestBlockNumber = await localWeb3.eth.getBlockNumber()
     } catch (err) {
-        let msg = "Your node seems to be down. Your RPC_ENDPOINT: " + rpcEndpoint
+        let msg = "Your node seems to be down.\nRPC_ENDPOINT :- " + rpcEndpoint + "\nTime :- "+new(Date)
         console.log(msg)
         console.log(err)
         alertTelegram(msg, process.env.TELEGRAM_TOKEN, process.env.TELEGRAM_CHAT)
@@ -34,7 +34,7 @@ const main = async () => {
     diffBlock =  latestBlockNumber-localLatestBlockNumber
     if (localLatestBlockNumber < latestBlockNumber - THRESHOLD) {
         let coinbase = await localWeb3.eth.getCoinbase()
-        let msg = "Coinbase :- " + coinbase + " \nRPCEndPoint :- " + rpcEndpoint +"\nDiffrenace :- "+diffBlock +" \nRPCCurrentBlock :- " + latestBlockNumber + "\nYourCurrentBlock :- " + localLatestBlockNumber+"\nTime :- "+new(Date)
+        let msg = "Coinbase :- " + coinbase + " \nRPCEndPoint :- " + rpcEndpoint +"\nDifference :- "+diffBlock +" \nRPCCurrentBlock :- " + latestBlockNumber + "\nYourCurrentBlock :- " + localLatestBlockNumber+"\nTime :- "+new(Date)
         alertTelegram(msg, process.env.TELEGRAM_TOKEN, process.env.TELEGRAM_CHAT)
         console.log(msg)
     } else {
