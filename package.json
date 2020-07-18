@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nodemon ./bin/www",
     "grunt": "grunt && nodemon ./bin/www",
-    "start": "pm2 start ./bin/www --name XDCStats",
+    "start": "pm2 start ./bin/www --name XDCStatsLive",
     "alert": "pm2 start alert.js --name XDCalert"
   },
   "dependencies": {
