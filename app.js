@@ -195,8 +195,8 @@ api.on('connection', function (spark)
 							action: 'block',
 							data: stats
 						});
-
-						console.success('API', 'BLK', 'Block:', data.block['number'], 'from:', data.id, 'ip:', spark.address.ip);
+						// extra logs removed.
+						// console.success('API', 'BLK', 'Block:', data.block['number'], 'from:', data.id, 'ip:', spark.address.ip);
 
 						Nodes.getCharts();
 					}
