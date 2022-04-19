@@ -1,4 +1,4 @@
-XDC01 Network Stats
+XDC Network Stats
 ============
 
 This is a visual interface for tracking XinFin Network status. It uses WebSockets to receive stats from running nodes and output them through an angular interface.
@@ -13,8 +13,8 @@ Make sure you have node.js and npm installed.
 Clone the repository and install the dependencies
 
 ```bash
-git clone https://github.com/XinFinOrg/XDC-netstats
-cd XDC-netstats
+git clone https://github.com/XinFinOrg/XDCStats
+cd XDCStats
 npm install
 sudo npm install -g grunt-cli
 ```
@@ -28,20 +28,11 @@ To build the full version run
 grunt
 ```
 
-To build the lite version run
-```bash
-grunt lite
-```
-
-If you want to build both versions run
-```bash
-grunt all
-```
 
 ## Run
 
 ```bash
-npm start
+WS_SECRET=WSSECRETHEREFORNETWORK npm start
 ```
 
 see the interface at http://localhost:3000
