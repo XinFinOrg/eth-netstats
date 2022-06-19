@@ -32,13 +32,8 @@ else
 var banned = require('./lib/utils/config').banned;
 
 // Init http server
-if( process.env.NODE_ENV !== 'production' )
-{
-	var app = require('./lib/express');
-	server = http.createServer(app);
-}
-else
-	server = http.createServer();
+var app = require('./lib/express');
+server = http.createServer(app);
 
 // Init socket vars
 var Primus = require('primus');
@@ -102,6 +97,12 @@ api.on('connection', function (spark)
 {
 	console.info('API', 'CON', 'Open:', spark.address.ip);
 
+  spark.on('forensics', function (data) {
+    console.log("received data from forensics")
+    console.log(data)
+  });
+  
+  
 	spark.on('hello', function (data)
 	{
 		console.info('API', 'CON', 'Hello', data['id']);
