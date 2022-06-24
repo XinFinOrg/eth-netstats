@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var logger = require('./lib/utils/logger');
+const {connectDB} = require('./lib/db/conn');
 var chalk = require('chalk');
 var http = require('http');
 // let alert = require('./alert')
@@ -409,6 +410,10 @@ var nodeCleanupTimeout = setInterval( function ()
 
 }, 1000*60*60);
 
-server.listen(process.env.PORT || 3000);
+
+connectDB().then(() => {
+  server.listen(process.env.PORT || 3000);
+})
+
 
 module.exports = server;
