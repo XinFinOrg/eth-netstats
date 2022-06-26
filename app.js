@@ -412,7 +412,9 @@ var nodeCleanupTimeout = setInterval( function ()
 
 
 connectDB().then(() => {
-  server.listen(process.env.PORT || 3000);
+  const port = process.env.PORT || 3000;
+  server.listen(port);
+  console.success(`Server started at port ${port}`)
 })
 
 

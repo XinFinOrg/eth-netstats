@@ -16,6 +16,8 @@
   "dependencies": {
     "body-parser": "1.13.3",
     "chalk": "^2.4.1",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
     "d3": "^3.5.17",
     "debug": "2.2.0",
     "dotenv": "^8.2.0",
