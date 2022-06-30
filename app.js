@@ -100,8 +100,12 @@ api.on('connection', function (spark)
 	console.info('API', 'CON', 'Open:', spark.address.ip);
 
   spark.on('forensics', async (forensicsReport) => {
-    console.log("received data from forensics")
-    await saveForensicsReport(forensicsReport);
+    console.log(`received forensics: ${JSON.stringify(forensicsReport)}`, )
+    try {
+      await saveForensicsReport(forensicsReport);  
+    } catch (error) {
+      console.error(error);
+    }
   });
   
   
