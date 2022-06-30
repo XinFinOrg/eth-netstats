@@ -98,9 +98,9 @@ api.on('connection', function (spark)
 {
 	console.info('API', 'CON', 'Open:', spark.address.ip);
 
-  spark.on('forensics', function (data) {
+  spark.on('forensics', async (forensicsReport) => {
     console.log("received data from forensics")
-    console.log(data)
+    await saveForensicsReport(forensicsReport);
   });
   
   
