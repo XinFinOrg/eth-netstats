@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var logger = require('./lib/utils/logger');
 const {connectDB} = require('./lib/db/conn');
+const {saveForensicsReport} = require('./lib/service/storage');
 var chalk = require('chalk');
 var http = require('http');
 // let alert = require('./alert')
