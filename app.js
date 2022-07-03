@@ -4,19 +4,21 @@ const {connectDB} = require('./lib/db/conn');
 const {saveForensicsReport} = require('./lib/service/storage');
 var chalk = require('chalk');
 var http = require('http');
+const {config} = require('./config');
 // let alert = require('./alert')
+
 // Init WS SECRET
 var WS_SECRET;
 
-if( !_.isUndefined(process.env.WS_SECRET) && !_.isNull(process.env.WS_SECRET) )
+if( !_.isUndefined(config.wsSecret) && !_.isNull(config.wsSecret) )
 {
-	if( process.env.WS_SECRET.indexOf('|') > 0 )
+	if( config.wsSecret.indexOf('|') > 0 )
 	{
-		WS_SECRET = process.env.WS_SECRET.split('|');
+		WS_SECRET = config.wsSecret.split('|');
 	}
 	else
 	{
-		WS_SECRET = [process.env.WS_SECRET];
+		WS_SECRET = [config.wsSecret];
 	}
 }
 else
@@ -417,7 +419,7 @@ var nodeCleanupTimeout = setInterval( function ()
 
 
 connectDB().then(() => {
-  const port = process.env.PORT || 3000;
+  const port = config.port || 3000;
   server.listen(port);
   console.success(`Server started at port ${port}`)
 })

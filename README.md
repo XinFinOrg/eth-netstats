@@ -29,10 +29,17 @@ grunt
 ```
 
 
-## Run
+## Run in local
 
 ```bash
-WS_SECRET=WSSECRETHEREFORNETWORK npm start
+docker-compose up mongo -d
+npm run dev
 ```
+see the interface at http://localhost:2000
 
-see the interface at http://localhost:3000
+## Run standalone container on server
+NOTE: Require mongodb installed first
+
+```bash
+docker-compose up -d --no-deps --build web-server
+```
