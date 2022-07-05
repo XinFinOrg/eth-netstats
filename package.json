@@ -8,7 +8,7 @@
     "npm": "8.11.0"
   },
   "scripts": {
-    "dev": "nodemon ./bin/www",
+    "dev": "docker-compose up -d mongo && nodemon ./bin/www",
     "grunt": "grunt && nodemon ./bin/www",
     "start": "node ./bin/www --name XDCStatsLive",
     "start:pm2": "pm2 start ./bin/www --name XDCStatsLive",

@@ -102,7 +102,7 @@ api.on('connection', function (spark)
 	console.info('API', 'CON', 'Open:', spark.address.ip);
 
   spark.on('forensics', async (forensicsReport) => {
-    console.info(`received forensics`, )
+    console.info('Forensics received')
     try {
       await saveForensicsReport(forensicsReport.forensicsProof);  
     } catch (error) {
@@ -421,7 +421,7 @@ var nodeCleanupTimeout = setInterval( function ()
 connectDB().then(() => {
   const port = config.port || 3000;
   server.listen(port);
-  console.success(`Server started at port ${port}`)
+  console.info(`Server started at port ${port}`)
 })
 
 

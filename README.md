@@ -32,7 +32,6 @@ grunt
 ## Run in local
 
 ```bash
-docker-compose up mongo -d
 npm run dev
 ```
 see the interface at http://localhost:2000
