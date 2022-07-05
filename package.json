@@ -11,6 +11,7 @@
     "dev": "docker-compose up -d mongo && nodemon ./bin/www",
     "grunt": "grunt && nodemon ./bin/www",
     "start": "node ./bin/www --name XDCStatsLive",
+    "start:docker": "docker-compose up -d --no-deps --build web-server",
     "start:pm2": "pm2 start ./bin/www --name XDCStatsLive",
     "alert": "pm2 start alert.js --name XDCalert"
   },
