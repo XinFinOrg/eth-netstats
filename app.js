@@ -1,12 +1,22 @@
+const path = require('path')
+require('dotenv').config({
+  path: path.resolve(__dirname, './.env')
+})
 var _ = require('lodash');
-var logger = require('./lib/utils/logger');
+require('./lib/utils/logger');
 const {connectDB} = require('./lib/db/conn');
 const {saveForensicsReport} = require('./lib/service/storage');
 var chalk = require('chalk');
 var http = require('http');
+
+
+
 const {config} = require('./config');
 // let alert = require('./alert')
+var app = require('./lib/express');
+var Primus = require('primus');
 
+var Collection = require('./lib/collection');
 // Init WS SECRET
 var WS_SECRET;
 
@@ -36,11 +46,9 @@ else
 var banned = require('./lib/utils/config').banned;
 
 // Init http server
-var app = require('./lib/express');
 server = http.createServer(app);
 
 // Init socket vars
-var Primus = require('primus');
 var api;
 var client;
 var server;
@@ -77,7 +85,6 @@ external = new Primus(server, {
 external.plugin('emit', require('primus-emit'));
 
 // Init collections
-var Collection = require('./lib/collection');
 var Nodes = new Collection(external);
 
 Nodes.setChartsCallback(function (err, charts)
