@@ -13,7 +13,7 @@ const {config} = require('./config');
 var app = require('./lib/express');
 var Primus = require('primus');
 
-const {initializeCollection, getCollection} = require('./lib/collection');
+var Collection = require('./lib/collection');
 // Init WS SECRET
 var WS_SECRET;
 
@@ -82,8 +82,7 @@ external = new Primus(server, {
 external.plugin('emit', require('primus-emit'));
 
 // Init collections
-initializeCollection(external);
-var Nodes = getCollection();
+var Nodes = new Collection(external);
 
 
 Nodes.setChartsCallback(function (err, charts)
