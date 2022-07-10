@@ -8,9 +8,6 @@ const {connectDB} = require('./lib/db/conn');
 const {saveForensicsReport} = require('./lib/service/storage');
 var chalk = require('chalk');
 var http = require('http');
-
-
-
 const {config} = require('./config');
 // let alert = require('./alert')
 var app = require('./lib/express');

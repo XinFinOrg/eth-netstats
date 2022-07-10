@@ -7,7 +7,8 @@ const config = {
   mongodbForensicsCollection: {
     url: `mongodb://${process.env.MONGODBURL || 'localhost:27017'}/forensics`
   },
-  enableForensics: process.env.ENABLE_FORENSICS == 'true' ? true: false
+  enableForensics: process.env.ENABLE_FORENSICS == 'true' ? true: false,
+  masternodeUrl: process.env.MASTERNODE_URL || "https://master.xinfin.network/api"
 };
 
 module.exports = {config}

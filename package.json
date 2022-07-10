@@ -16,6 +16,7 @@
     "alert": "pm2 start alert.js --name XDCalert"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "body-parser": "1.13.3",
     "chalk": "^2.4.1",
     "config": "^3.3.7",
