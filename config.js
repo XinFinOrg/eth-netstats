@@ -6,7 +6,8 @@ const config = {
   },
   mongodbForensicsCollection: {
     url: `mongodb://${process.env.MONGODBURL || 'localhost:27017'}/forensics`
-  }
+  },
+  enableForensics: process.env.ENABLE_FORENSICS == 'true' ? true: false
 };
 
 module.exports = {config}

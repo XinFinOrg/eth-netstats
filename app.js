@@ -102,11 +102,13 @@ api.on('connection', function (spark)
 	console.info('API', 'CON', 'Open:', spark.address.ip);
 
   spark.on('forensics', async (forensicsReport) => {
-    console.info('Forensics received')
-    try {
-      await saveForensicsReport(forensicsReport.forensicsProof);  
-    } catch (error) {
-      console.error(error);
+    if(config.enableForensics) {
+      try {
+        console.info('Forensics received')
+        await saveForensicsReport(forensicsReport.forensicsProof);  
+      } catch (error) {
+        console.error(error);
+      }
     }
   });
   
@@ -417,12 +419,20 @@ var nodeCleanupTimeout = setInterval( function ()
 
 }, 1000*60*60);
 
-
-connectDB().then(() => {
+const startServer = () => {
   const port = config.port || 3000;
   server.listen(port);
   console.info(`Server started at port ${port}`)
-})
+}
+
+if(config.enableForensics) {
+  connectDB().then(() => {
+    startServer();
+  })
+} else {
+  startServer();
+}
+
 
 
 module.exports = server;
