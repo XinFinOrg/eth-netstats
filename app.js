@@ -1,20 +1,31 @@
+const path = require('path')
+require('dotenv').config({
+  path: path.resolve(__dirname, './.env')
+})
 var _ = require('lodash');
-var logger = require('./lib/utils/logger');
+require('./lib/utils/logger');
+const {connectDB} = require('./lib/db/conn');
+const {saveForensicsReport} = require('./lib/service/storage');
 var chalk = require('chalk');
 var http = require('http');
+const {config} = require('./config');
 // let alert = require('./alert')
+var app = require('./lib/express');
+var Primus = require('primus');
+
+var Collection = require('./lib/collection');
 // Init WS SECRET
 var WS_SECRET;
 
-if( !_.isUndefined(process.env.WS_SECRET) && !_.isNull(process.env.WS_SECRET) )
+if( !_.isUndefined(config.wsSecret) && !_.isNull(config.wsSecret) )
 {
-	if( process.env.WS_SECRET.indexOf('|') > 0 )
+	if( config.wsSecret.indexOf('|') > 0 )
 	{
-		WS_SECRET = process.env.WS_SECRET.split('|');
+		WS_SECRET = config.wsSecret.split('|');
 	}
 	else
 	{
-		WS_SECRET = [process.env.WS_SECRET];
+		WS_SECRET = [config.wsSecret];
 	}
 }
 else
@@ -32,16 +43,9 @@ else
 var banned = require('./lib/utils/config').banned;
 
 // Init http server
-if( process.env.NODE_ENV !== 'production' )
-{
-	var app = require('./lib/express');
-	server = http.createServer(app);
-}
-else
-	server = http.createServer();
+server = http.createServer(app);
 
 // Init socket vars
-var Primus = require('primus');
 var api;
 var client;
 var server;
@@ -78,8 +82,8 @@ external = new Primus(server, {
 external.plugin('emit', require('primus-emit'));
 
 // Init collections
-var Collection = require('./lib/collection');
 var Nodes = new Collection(external);
+
 
 Nodes.setChartsCallback(function (err, charts)
 {
@@ -102,6 +106,18 @@ api.on('connection', function (spark)
 {
 	console.info('API', 'CON', 'Open:', spark.address.ip);
 
+  spark.on('forensics', async (forensicsReport) => {
+    if(config.enableForensics) {
+      try {
+        console.info('Forensics received')
+        await saveForensicsReport(forensicsReport.forensicsProof);  
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  });
+  
+  
 	spark.on('hello', function (data)
 	{
 		console.info('API', 'CON', 'Hello', data['id']);
@@ -408,6 +424,20 @@ var nodeCleanupTimeout = setInterval( function ()
 
 }, 1000*60*60);
 
-server.listen(process.env.PORT || 3000);
+const startServer = () => {
+  const port = config.port || 3000;
+  server.listen(port);
+  console.info(`Server started at port ${port}`)
+}
+
+if(config.enableForensics) {
+  connectDB().then(() => {
+    startServer();
+  })
+} else {
+  startServer();
+}
+
+
 
 module.exports = server;
