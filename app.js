@@ -13,7 +13,7 @@ const {config} = require('./config');
 var app = require('./lib/express');
 var Primus = require('primus');
 
-var Collection = require('./lib/collection');
+var { initCollection, getCollection} = require('./lib/collection');
 // Init WS SECRET
 var WS_SECRET;
 
@@ -82,8 +82,8 @@ external = new Primus(server, {
 external.plugin('emit', require('primus-emit'));
 
 // Init collections
-var Nodes = new Collection(external);
-
+initCollection(external);
+var Nodes = getCollection();
 
 Nodes.setChartsCallback(function (err, charts)
 {
@@ -197,7 +197,7 @@ api.on('connection', function (spark)
 	{
 		if( !_.isUndefined(data.id) && !_.isUndefined(data.block) )
 		{
-			Nodes.addBlock(data.id, data.block, function (err, stats)
+			Nodes.addBlock(data.id, data.block, data.latestCommittedBlockInfo, function (err, stats)
 			{
 				if(err !== null)
 				{
