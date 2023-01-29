@@ -6,7 +6,7 @@ This is a visual interface for tracking XinFin Network status. It uses WebSocket
 ## Prerequisite
 * node
 * npm
-* MongoDB(Forensics purpose)
+* MongoDB(Only needed if to run Forensics)
 
 ## Installation
 Make sure you have node.js and npm installed.
@@ -30,12 +30,16 @@ grunt
 ```
 
 ## Run in server
-1. Copy paste `.env_sample` and rename to `.env`. Set the relevant environment variables. To enable Forensics, put `ENABLE_FORENSICS=true`, otherwise default to `false`
-2. If Forensics is enabled:
+1. Copy paste `.env_sample` and rename to `.env`. Set the relevant environment variables. 
+2. Start the docker to run the application: `npm run start:docker`
+
+### Run with Forensics
+1. In the `.env`, To enable Forensics, put `ENABLE_FORENSICS=true`
+2. Set up mongoDB
   - Download and set up mongoDB: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#install-mongodb-community-edition
   - Set monggoDB url to `MONGODBURL` in .env , default to `localhost:27017`
 3. Start the docker to run the application: `npm run start:docker`
-
+4. Run the Frontend UI. Please refer to the [Forensics-UI](https://github.com/XinFinOrg/XDC_Forensics)
 
 ## Run in local
 
